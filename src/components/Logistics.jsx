@@ -39,7 +39,7 @@ export default function Logistics() {
                       <item.icon fontSize="small" />
                     </Avatar>
                     <Box>
-                      <Typography variant="subtitle1" sx={{ fontWeight: 700 }}>
+                      <Typography variant="subtitle1" component="h3" sx={{ fontWeight: 700 }}>
                         {item.title}
                       </Typography>
                       <Typography variant="body2" color="text.secondary">
@@ -60,7 +60,7 @@ export default function Logistics() {
                     <BackpackIcon fontSize="small" />
                   </Avatar>
                   <Box>
-                    <Typography variant="subtitle1" sx={{ fontWeight: 700, mb: 1 }}>
+                    <Typography variant="subtitle1" component="h3" sx={{ fontWeight: 700, mb: 1 }}>
                       What to Bring
                     </Typography>
                     <Stack direction="row" flexWrap="wrap" gap={1}>

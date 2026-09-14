@@ -5,18 +5,32 @@ import Card from '@mui/material/Card'
 import CardContent from '@mui/material/CardContent'
 import Typography from '@mui/material/Typography'
 import Avatar from '@mui/material/Avatar'
+import Button from '@mui/material/Button'
 import CalendarMonthIcon from '@mui/icons-material/CalendarMonth'
 import AccessTimeIcon from '@mui/icons-material/AccessTime'
 import PlaceIcon from '@mui/icons-material/Place'
 import GroupsIcon from '@mui/icons-material/Groups'
 import TrackChangesIcon from '@mui/icons-material/TrackChanges'
+import EventAvailableIcon from '@mui/icons-material/EventAvailable'
 import { event } from '../data/eventData.js'
+import { downloadIcs } from '../utils/calendar.js'
+import { directionsUrl } from '../utils/location.js'
 import SectionHeading from './SectionHeading.jsx'
 
 const cards = [
-  { icon: CalendarMonthIcon, label: 'Date', value: event.displayDate },
-  { icon: AccessTimeIcon, label: 'Start & End Time', value: `${event.startTime} – ${event.endTime}` },
-  { icon: PlaceIcon, label: 'Venue', value: event.venue },
+  {
+    icon: CalendarMonthIcon,
+    label: 'Date',
+    value: event.displayDate,
+    action: { label: 'Add to Calendar', icon: EventAvailableIcon, onClick: downloadIcs },
+  },
+  { icon: AccessTimeIcon, label: 'Start & End Time', value: `${event.startTime} – ${event.endTime} ${event.tzAbbr}` },
+  {
+    icon: PlaceIcon,
+    label: 'Venue',
+    value: event.venue,
+    action: { label: 'Get Directions', icon: PlaceIcon, href: directionsUrl(event.venue) },
+  },
   { icon: GroupsIcon, label: 'Expected Participants', value: event.expectedParticipants },
   { icon: TrackChangesIcon, label: 'Workshop Objective', value: event.objective },
 ]
@@ -55,12 +69,26 @@ export default function EventOverview() {
                   >
                     <card.icon />
                   </Avatar>
-                  <Typography variant="subtitle2" color="text.secondary" sx={{ mb: 0.5 }}>
+                  <Typography variant="subtitle2" component="p" color="text.secondary" sx={{ mb: 0.5 }}>
                     {card.label}
                   </Typography>
                   <Typography variant="body1" sx={{ fontWeight: 600 }}>
                     {card.value}
                   </Typography>
+                  {card.action && (
+                    <Button
+                      size="small"
+                      startIcon={<card.action.icon fontSize="small" />}
+                      href={card.action.href}
+                      onClick={card.action.onClick}
+                      target={card.action.href ? '_blank' : undefined}
+                      rel={card.action.href ? 'noopener noreferrer' : undefined}
+                      sx={{ mt: 1 }}
+                      className="no-print"
+                    >
+                      {card.action.label}
+                    </Button>
+                  )}
                 </CardContent>
               </Card>
             </Grid>
