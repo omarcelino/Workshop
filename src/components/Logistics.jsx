@@ -15,6 +15,7 @@ import DirectionsCarIcon from '@mui/icons-material/DirectionsCar'
 import RestaurantIcon from '@mui/icons-material/Restaurant'
 import BackpackIcon from '@mui/icons-material/Backpack'
 import ContactPhoneIcon from '@mui/icons-material/ContactPhone'
+import { alpha } from '@mui/material/styles'
 import { event, logistics } from '../data/eventData.js'
 import { directionsUrl } from '../utils/location.js'
 import SectionHeading from './SectionHeading.jsx'
@@ -36,7 +37,11 @@ const items = [
 
 export default function Logistics() {
   return (
-    <Box id="logistics" component="section" sx={{ py: { xs: 8, md: 10 } }}>
+    <Box
+      id="logistics"
+      component="section"
+      sx={{ py: { xs: 8, md: 10 }, backgroundColor: (t) => alpha(t.palette.primary.main, 0.06) }}
+    >
       <Container maxWidth="lg">
         <SectionHeading eyebrow="Practical Details" title="Logistics" />
         <Box

@@ -22,6 +22,7 @@ import FreeBreakfastIcon from '@mui/icons-material/FreeBreakfast'
 import RestaurantIcon from '@mui/icons-material/Restaurant'
 import GroupsIcon from '@mui/icons-material/Groups'
 import FlagCircleIcon from '@mui/icons-material/FlagCircle'
+import { alpha } from '@mui/material/styles'
 import { agenda, event } from '../data/eventData.js'
 import SectionHeading from './SectionHeading.jsx'
 
@@ -48,7 +49,7 @@ export default function Agenda() {
     <Box
       id="agenda"
       component="section"
-      sx={{ py: { xs: 8, md: 10 }, backgroundColor: 'background.default' }}
+      sx={{ py: { xs: 8, md: 10 }, backgroundColor: (t) => alpha(t.palette.secondary.main, 0.06) }}
     >
       <Container maxWidth="lg">
         <SectionHeading

@@ -11,6 +11,7 @@ import PlaceIcon from '@mui/icons-material/Place'
 import GroupsIcon from '@mui/icons-material/Groups'
 import TrackChangesIcon from '@mui/icons-material/TrackChanges'
 import EventAvailableIcon from '@mui/icons-material/EventAvailable'
+import { alpha } from '@mui/material/styles'
 import { event } from '../data/eventData.js'
 import { downloadIcs, isCalendarDataValid } from '../utils/calendar.js'
 import { directionsUrl } from '../utils/location.js'
@@ -54,7 +55,7 @@ export default function EventOverview() {
     <Box
       id="overview"
       component="section"
-      sx={{ py: { xs: 8, md: 10 }, backgroundColor: 'background.default' }}
+      sx={{ py: { xs: 8, md: 10 }, backgroundColor: (t) => alpha(t.palette.primary.main, 0.06) }}
     >
       <Container maxWidth="lg">
         <SectionHeading eyebrow="At a Glance" title="Event Overview" />

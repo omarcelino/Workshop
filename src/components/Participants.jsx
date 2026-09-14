@@ -4,6 +4,7 @@ import Card from '@mui/material/Card'
 import CardContent from '@mui/material/CardContent'
 import Typography from '@mui/material/Typography'
 import PeopleIcon from '@mui/icons-material/People'
+import { alpha } from '@mui/material/styles'
 import { participants } from '../data/eventData.js'
 import SectionHeading from './SectionHeading.jsx'
 
@@ -12,7 +13,7 @@ export default function Participants() {
     <Box
       id="participants"
       component="section"
-      sx={{ py: { xs: 8, md: 10 }, backgroundColor: 'background.default' }}
+      sx={{ py: { xs: 8, md: 10 }, backgroundColor: (t) => alpha(t.palette.info.main, 0.06) }}
     >
       <Container maxWidth="md">
         <SectionHeading eyebrow="Who's Attending" title="Participants" />
