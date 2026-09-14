@@ -60,7 +60,7 @@ export const businessFunctions = [
 export const rsvp = {
   label: 'RSVP Now',
   url: '[TO CONFIRM — Google Form / Tally link]',
-  fallbackEmail: '[TO CONFIRM — e.g. ruth.oluoch@company.com]',
+  fallbackEmail: '[TO CONFIRM — e.g. jane.doe@company.com]',
 }
 
 // [DRAFT — 4 objectives inferred from the CJM workshop brief; please confirm]
@@ -157,14 +157,14 @@ export const agenda = [
 
 export const facilitators = [
   {
-    name: 'Rosebella Abok',
+    name: 'John Doe', // [TO CONFIRM — name pending]
     role: 'Workshop Lead',
     organisation: '[TO CONFIRM]',
     bio: 'Leads the design and facilitation of the CJM workshop.', // [DRAFT — please confirm wording]
     photo: '',
   },
   {
-    name: 'Ruth Oluoch',
+    name: 'Jane Doe', // [TO CONFIRM — name pending]
     role: 'Stakeholder Coordination',
     organisation: '[TO CONFIRM]',
     bio: 'Coordinates stakeholder engagement across the 15 participating business functions.', // [DRAFT — please confirm wording]
@@ -188,7 +188,7 @@ export const logistics = {
   parking: '[TO CONFIRM — parking or transport information]',
   catering: '[TO CONFIRM — catering details]',
   whatToBring: ['[TO CONFIRM]', '[TO CONFIRM]', '[TO CONFIRM]'],
-  contactPerson: 'Ruth Oluoch',
+  contactPerson: 'Jane Doe', // [TO CONFIRM — name pending]
 }
 
 export const importantInformation = [
@@ -198,9 +198,9 @@ export const importantInformation = [
 ]
 
 export const contact = {
-  organiser: 'Rosebella Abok',
+  organiser: 'John Doe', // [TO CONFIRM — name pending]
   organisation: 'Workshop Lead — Customer Journey Mapping (CJM) Workshop', // [TO CONFIRM — department/company]
-  secondaryContact: 'Ruth Oluoch (Stakeholder Coordination)',
+  secondaryContact: 'Jane Doe (Stakeholder Coordination)', // [TO CONFIRM — name pending]
   email: '[TO CONFIRM]',
   phone: '[TO CONFIRM]',
   social: {
