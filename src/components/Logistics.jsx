@@ -4,19 +4,30 @@ import Card from '@mui/material/Card'
 import CardContent from '@mui/material/CardContent'
 import Typography from '@mui/material/Typography'
 import Avatar from '@mui/material/Avatar'
+import Button from '@mui/material/Button'
 import Chip from '@mui/material/Chip'
 import Stack from '@mui/material/Stack'
+import CalendarMonthIcon from '@mui/icons-material/CalendarMonth'
+import AccessTimeIcon from '@mui/icons-material/AccessTime'
 import PlaceIcon from '@mui/icons-material/Place'
 import LoginIcon from '@mui/icons-material/Login'
 import DirectionsCarIcon from '@mui/icons-material/DirectionsCar'
 import RestaurantIcon from '@mui/icons-material/Restaurant'
 import BackpackIcon from '@mui/icons-material/Backpack'
 import ContactPhoneIcon from '@mui/icons-material/ContactPhone'
-import { logistics } from '../data/eventData.js'
+import { event, logistics } from '../data/eventData.js'
+import { directionsUrl } from '../utils/location.js'
 import SectionHeading from './SectionHeading.jsx'
 
 const items = [
-  { icon: PlaceIcon, title: 'Venue', value: logistics.venue },
+  { icon: CalendarMonthIcon, title: 'Date', value: event.displayDate },
+  { icon: AccessTimeIcon, title: 'Time', value: `${event.startTime} – ${event.endTime} ${event.tzAbbr}` },
+  {
+    icon: PlaceIcon,
+    title: 'Venue',
+    value: logistics.venue,
+    action: { label: 'Get Directions', href: directionsUrl(logistics.venue) },
+  },
   { icon: LoginIcon, title: 'Arrival / Check-in', value: logistics.arrival },
   { icon: DirectionsCarIcon, title: 'Parking & Transport', value: logistics.parking },
   { icon: RestaurantIcon, title: 'Catering', value: logistics.catering },
@@ -31,7 +42,9 @@ export default function Logistics() {
         <Box
           sx={{
             display: 'grid',
-            gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))',
+            // Fixed breakpoints (not auto-fit): 8 cards total, so this is
+            // always a clean 2x4 (sm) or 4x2 (md+) — never a partial row.
+            gridTemplateColumns: { xs: '1fr', sm: 'repeat(2, 1fr)', md: 'repeat(4, 1fr)' },
             gap: 3,
           }}
         >
@@ -49,6 +62,18 @@ export default function Logistics() {
                     <Typography variant="body2" color="text.secondary">
                       {item.value}
                     </Typography>
+                    {item.action && (
+                      <Button
+                        size="small"
+                        href={item.action.href}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="no-print"
+                        sx={{ mt: 0.5, px: 0 }}
+                      >
+                        {item.action.label}
+                      </Button>
+                    )}
                   </Box>
                 </Stack>
               </CardContent>

@@ -161,6 +161,7 @@ export const facilitators = [
     role: 'Workshop Lead',
     organisation: '[TO CONFIRM]',
     bio: 'Leads the design and facilitation of the CJM workshop.', // [DRAFT — please confirm wording]
+    responsibility: '[TO CONFIRM — e.g. Overall facilitation & agenda delivery]',
     photo: '',
   },
   {
@@ -168,6 +169,7 @@ export const facilitators = [
     role: 'Stakeholder Coordination',
     organisation: '[TO CONFIRM]',
     bio: 'Coordinates stakeholder engagement across the 15 participating business functions.', // [DRAFT — please confirm wording]
+    responsibility: '[TO CONFIRM — e.g. Stakeholder liaison & logistics]',
     photo: '',
   },
 ]
@@ -180,7 +182,57 @@ export const participants = {
     '[TO CONFIRM — any accounts, tools, or software to install]',
     '[TO CONFIRM — anything else participants should prepare]',
   ],
+  // What data/examples to bring, how long preparation should take, and any
+  // required materials — displayed in the "Before the Workshop" section.
+  dataToBring: '[TO CONFIRM — e.g. recent customer complaints, process documents, examples of pain points from your function]',
+  effort: '[TO CONFIRM — e.g. approx. 30 minutes]',
+  materials: ['[TO CONFIRM]'],
 }
+
+// Concrete, tangible outcomes participants leave the workshop with.
+export const outcomes = [
+  {
+    icon: 'Map',
+    title: 'A Shared Current-State Journey Map',
+    description: 'One agreed, end-to-end view of the customer journey that every function recognises and can point to.',
+  },
+  {
+    icon: 'ReportProblem',
+    title: 'Identified Customer Pain Points',
+    description: 'A documented list of the friction points customers experience today, in their own words.',
+  },
+  {
+    icon: 'Groups',
+    title: 'Identified Cross-Functional Gaps',
+    description: 'Clarity on where handoffs between teams break down or duplicate effort.',
+  },
+  {
+    icon: 'LowPriority',
+    title: 'Prioritised Improvement Opportunities',
+    description: 'A ranked shortlist of the changes that would improve the journey most.',
+  },
+  {
+    icon: 'Handshake',
+    title: 'Agreed Next Actions',
+    description: 'Concrete next steps the group has committed to, not just ideas on a wall.',
+  },
+  {
+    icon: 'AssignmentInd',
+    title: 'Clear Ownership for Priority Actions',
+    description: 'A named owner and rough timeline for each priority action.',
+  },
+]
+
+// Shared working principles for how the room operates on the day.
+export const workingPrinciples = [
+  'Customer perspective first',
+  'Evidence over assumptions',
+  'Everyone contributes',
+  'Surface problems before jumping to solutions',
+  'Focus on actionable improvements',
+  'Cross-functional collaboration',
+  'Leave with clear ownership',
+]
 
 export const logistics = {
   venue: 'Dusit Princess',

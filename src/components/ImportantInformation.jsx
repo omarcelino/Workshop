@@ -20,7 +20,9 @@ export default function ImportantInformation() {
           sx={{
             p: { xs: 3, md: 4 },
             backgroundColor: 'secondary.main',
-            color: 'common.white',
+            // Dark text/icons on the amber accent — white text here falls
+            // well short of WCAG AA contrast (~2:1 vs a required 4.5:1).
+            color: 'rgba(0, 0, 0, 0.87)',
           }}
         >
           <Stack direction="row" spacing={1.5} alignItems="center" sx={{ mb: 2 }}>
@@ -32,7 +34,7 @@ export default function ImportantInformation() {
           <List dense>
             {importantInformation.map((note, index) => (
               <ListItem key={index} disableGutters>
-                <ListItemIcon sx={{ minWidth: 32, color: 'common.white' }}>
+                <ListItemIcon sx={{ minWidth: 32, color: 'inherit' }}>
                   <PriorityHighIcon fontSize="small" />
                 </ListItemIcon>
                 <ListItemText primary={note} />

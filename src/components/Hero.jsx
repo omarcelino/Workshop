@@ -12,7 +12,8 @@ import HowToRegIcon from '@mui/icons-material/HowToReg'
 import EventAvailableIcon from '@mui/icons-material/EventAvailable'
 import CountdownTimer from './CountdownTimer.jsx'
 import { event, rsvp, isPlaceholder, theme as eventTheme } from '../data/eventData.js'
-import { googleCalendarUrl } from '../utils/calendar.js'
+import { googleCalendarUrl, isCalendarDataValid } from '../utils/calendar.js'
+import { track } from '../utils/analytics.js'
 
 function rsvpHref() {
   if (!isPlaceholder(rsvp.url)) return rsvp.url
@@ -119,9 +120,12 @@ export default function Hero() {
             disabled={!rsvpHref()}
             target={rsvpHref()?.startsWith('mailto:') ? undefined : '_blank'}
             rel={rsvpHref()?.startsWith('mailto:') ? undefined : 'noopener noreferrer'}
+            onClick={() => track('rsvp_click', { source: 'hero' })}
             sx={{
               backgroundColor: 'secondary.main',
-              color: 'common.white',
+              // Dark text on the amber accent for sufficient contrast (white
+              // text on secondary.main falls well short of WCAG AA).
+              color: 'rgba(0, 0, 0, 0.87)',
               fontWeight: 600,
               '&:hover': { backgroundColor: 'secondary.dark' },
             }}
@@ -132,7 +136,10 @@ export default function Hero() {
             variant="contained"
             size="large"
             endIcon={<ArrowDownwardIcon />}
-            onClick={() => document.getElementById('agenda')?.scrollIntoView({ behavior: 'smooth' })}
+            onClick={() => {
+              track('nav_cta_click', { label: 'view_event_plan' })
+              document.getElementById('agenda')?.scrollIntoView({ behavior: 'smooth' })
+            }}
             sx={{
               backgroundColor: 'common.white',
               color: 'primary.main',
@@ -150,19 +157,24 @@ export default function Hero() {
           justifyContent="center"
           className="no-print"
         >
-          <Button
-            variant="outlined"
-            startIcon={<EventAvailableIcon />}
-            onClick={() => window.open(googleCalendarUrl(), '_blank', 'noopener,noreferrer')}
-            sx={{
-              borderColor: 'rgba(255,255,255,0.6)',
-              color: 'common.white',
-              fontWeight: 600,
-              '&:hover': { borderColor: 'common.white', backgroundColor: 'rgba(255,255,255,0.1)' },
-            }}
-          >
-            Add to Calendar
-          </Button>
+          {isCalendarDataValid() && (
+            <Button
+              variant="outlined"
+              startIcon={<EventAvailableIcon />}
+              onClick={() => {
+                track('add_to_calendar_click', { source: 'hero', type: 'google' })
+                window.open(googleCalendarUrl(), '_blank', 'noopener,noreferrer')
+              }}
+              sx={{
+                borderColor: 'rgba(255,255,255,0.6)',
+                color: 'common.white',
+                fontWeight: 600,
+                '&:hover': { borderColor: 'common.white', backgroundColor: 'rgba(255,255,255,0.1)' },
+              }}
+            >
+              Add to Calendar
+            </Button>
+          )}
           <Button
             variant="outlined"
             startIcon={<DownloadIcon />}

@@ -12,6 +12,7 @@ import LanguageIcon from '@mui/icons-material/Language'
 import Button from '@mui/material/Button'
 import HowToRegIcon from '@mui/icons-material/HowToReg'
 import { contact, rsvp, isPlaceholder } from '../data/eventData.js'
+import { track } from '../utils/analytics.js'
 import SectionHeading from './SectionHeading.jsx'
 
 function rsvpHref() {
@@ -53,6 +54,7 @@ export default function Contact() {
               disabled={!href}
               target={href?.startsWith('mailto:') ? undefined : '_blank'}
               rel={href?.startsWith('mailto:') ? undefined : 'noopener noreferrer'}
+              onClick={() => track('rsvp_click', { source: 'contact' })}
               sx={{ mb: 3 }}
             >
               RSVP for This Workshop
@@ -70,6 +72,7 @@ export default function Contact() {
                     variant="body2"
                     component="a"
                     href={`mailto:${contact.email}`}
+                    onClick={() => track('contact_click', { channel: 'email' })}
                     sx={{ color: 'text.primary', textDecoration: 'none', '&:hover': { textDecoration: 'underline' } }}
                   >
                     {contact.email}
@@ -87,6 +90,7 @@ export default function Contact() {
                     variant="body2"
                     component="a"
                     href={`tel:${contact.phone.replace(/[^+\d]/g, '')}`}
+                    onClick={() => track('contact_click', { channel: 'phone' })}
                     sx={{ color: 'text.primary', textDecoration: 'none', '&:hover': { textDecoration: 'underline' } }}
                   >
                     {contact.phone}
