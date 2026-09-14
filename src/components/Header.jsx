@@ -42,6 +42,31 @@ export default function Header() {
 
   return (
     <>
+      <Box
+        component="a"
+        href="#main-content"
+        className="no-print"
+        sx={{
+          position: 'absolute',
+          left: 8,
+          top: -48,
+          zIndex: (t) => t.zIndex.appBar + 1,
+          px: 2,
+          py: 1,
+          backgroundColor: 'primary.main',
+          color: 'common.white',
+          borderRadius: 1,
+          transition: 'top 0.15s ease',
+          '&:focus-visible': {
+            top: 8,
+            outline: '2px solid',
+            outlineColor: 'common.white',
+            outlineOffset: 2,
+          },
+        }}
+      >
+        Skip to main content
+      </Box>
       <AppBar
         position="sticky"
         color="inherit"
@@ -53,26 +78,22 @@ export default function Header() {
           <EventIcon color="primary" sx={{ mr: 1 }} aria-hidden="true" />
           <Typography
             variant="h6"
-            component="span"
-            role="link"
-            tabIndex={0}
+            component="a"
+            href="#hero"
             aria-label={`${event.title} — back to top`}
             sx={{
               flexGrow: 1,
               fontWeight: 700,
               color: 'text.primary',
-              cursor: 'pointer',
+              textDecoration: 'none',
               '&:focus-visible': {
                 outline: (t) => `2px solid ${t.palette.primary.main}`,
                 outlineOffset: 2,
               },
             }}
-            onClick={() => scrollTo('hero')}
-            onKeyDown={(e) => {
-              if (e.key === 'Enter' || e.key === ' ') {
-                e.preventDefault()
-                scrollTo('hero')
-              }
+            onClick={(e) => {
+              e.preventDefault()
+              scrollTo('hero')
             }}
           >
             {event.title}

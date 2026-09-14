@@ -25,7 +25,7 @@ export default function ImportantInformation() {
         >
           <Stack direction="row" spacing={1.5} alignItems="center" sx={{ mb: 2 }}>
             <WarningAmberIcon />
-            <Typography variant="h6" sx={{ fontWeight: 700 }}>
+            <Typography variant="h6" component="h2" sx={{ fontWeight: 700 }}>
               Important Information
             </Typography>
           </Stack>

@@ -33,11 +33,25 @@ export default function Contact() {
             <Stack spacing={1.5} sx={{ mb: 3 }}>
               <Stack direction="row" spacing={1} justifyContent="center" alignItems="center">
                 <EmailIcon color="primary" fontSize="small" />
-                <Typography variant="body2">{contact.email}</Typography>
+                <Typography
+                  variant="body2"
+                  component="a"
+                  href={`mailto:${contact.email}`}
+                  sx={{ color: 'text.primary', textDecoration: 'none', '&:hover': { textDecoration: 'underline' } }}
+                >
+                  {contact.email}
+                </Typography>
               </Stack>
               <Stack direction="row" spacing={1} justifyContent="center" alignItems="center">
                 <PhoneIcon color="primary" fontSize="small" />
-                <Typography variant="body2">{contact.phone}</Typography>
+                <Typography
+                  variant="body2"
+                  component="a"
+                  href={`tel:${contact.phone.replace(/[^+\d]/g, '')}`}
+                  sx={{ color: 'text.primary', textDecoration: 'none', '&:hover': { textDecoration: 'underline' } }}
+                >
+                  {contact.phone}
+                </Typography>
               </Stack>
             </Stack>
 

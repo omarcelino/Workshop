@@ -132,7 +132,7 @@ export default function Hero() {
               '&:hover': { borderColor: 'common.white', backgroundColor: 'rgba(255,255,255,0.1)' },
             }}
           >
-            Download Event Plan
+            Print / Save as PDF
           </Button>
         </Stack>
       </Container>

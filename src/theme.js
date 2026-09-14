@@ -16,7 +16,7 @@ const theme = createTheme({
     },
   },
   typography: {
-    fontFamily: '"Google Sans", "Roboto", "Helvetica", "Arial", sans-serif',
+    fontFamily: '"Inter", "Roboto", "Helvetica", "Arial", sans-serif',
     h1: { fontWeight: 700 },
     h2: { fontWeight: 700 },
     h3: { fontWeight: 700 },
@@ -82,6 +82,17 @@ const theme = createTheme({
           // (nav clicks, "View Event Plan" CTA) land fully below it instead
           // of being partially hidden underneath.
           scrollPaddingTop: 88,
+        },
+        // Respect the OS-level reduced-motion setting: kill smooth scroll
+        // and card hover transitions for users who've asked for less motion.
+        '@media (prefers-reduced-motion: reduce)': {
+          'html': { scrollBehavior: 'auto' },
+          '*': {
+            animationDuration: '0.001ms !important',
+            animationIterationCount: '1 !important',
+            transitionDuration: '0.001ms !important',
+            scrollBehavior: 'auto !important',
+          },
         },
         // ---------------------------------------------------------------
         // Print stylesheet: produce a clean, readable, professional
