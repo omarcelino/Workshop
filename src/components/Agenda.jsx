@@ -22,7 +22,7 @@ import FreeBreakfastIcon from '@mui/icons-material/FreeBreakfast'
 import RestaurantIcon from '@mui/icons-material/Restaurant'
 import GroupsIcon from '@mui/icons-material/Groups'
 import FlagCircleIcon from '@mui/icons-material/FlagCircle'
-import { agenda } from '../data/eventData.js'
+import { agenda, event } from '../data/eventData.js'
 import SectionHeading from './SectionHeading.jsx'
 
 // Visual language for each session type: chip colour, timeline colour token,
@@ -71,14 +71,17 @@ export default function Agenda() {
           sx={{ display: { xs: 'none', md: 'block' } }}
         >
           <Table aria-label="Workshop agenda timeline">
+            <caption style={{ captionSide: 'top', textAlign: 'left', padding: '8px 16px', fontWeight: 600 }}>
+              Full-day schedule — {event.displayDate}, {event.venue}
+            </caption>
             <TableHead>
               <TableRow sx={{ backgroundColor: 'primary.main' }}>
-                <TableCell sx={{ p: 0, width: 64 }} aria-hidden="true" />
-                <TableCell sx={{ color: 'common.white', fontWeight: 700 }}>Time</TableCell>
-                <TableCell sx={{ color: 'common.white', fontWeight: 700 }}>Session</TableCell>
-                <TableCell sx={{ color: 'common.white', fontWeight: 700 }}>Description</TableCell>
-                <TableCell sx={{ color: 'common.white', fontWeight: 700 }}>Facilitator</TableCell>
-                <TableCell sx={{ color: 'common.white', fontWeight: 700 }}>Type</TableCell>
+                <TableCell component="th" scope="col" sx={{ p: 0, width: 64 }} aria-hidden="true" />
+                <TableCell component="th" scope="col" sx={{ color: 'common.white', fontWeight: 700 }}>Time</TableCell>
+                <TableCell component="th" scope="col" sx={{ color: 'common.white', fontWeight: 700 }}>Session</TableCell>
+                <TableCell component="th" scope="col" sx={{ color: 'common.white', fontWeight: 700 }}>Description</TableCell>
+                <TableCell component="th" scope="col" sx={{ color: 'common.white', fontWeight: 700 }}>Facilitator</TableCell>
+                <TableCell component="th" scope="col" sx={{ color: 'common.white', fontWeight: 700 }}>Type</TableCell>
               </TableRow>
             </TableHead>
             <TableBody>
@@ -191,7 +194,7 @@ export default function Agenda() {
                       </Typography>
                       <Chip size="small" label={meta.label} color={meta.chipColor} />
                     </Stack>
-                    <Typography variant="h6" sx={{ fontWeight: 700, mb: 0.5 }}>
+                    <Typography variant="h6" component="h3" sx={{ fontWeight: 700, mb: 0.5 }}>
                       {item.session}
                     </Typography>
                     <Typography variant="body2" color="text.secondary" sx={{ mb: 1 }}>

@@ -5,12 +5,20 @@ import Stack from '@mui/material/Stack'
 import Button from '@mui/material/Button'
 import Chip from '@mui/material/Chip'
 import CalendarMonthIcon from '@mui/icons-material/CalendarMonth'
-import AccessTimeIcon from '@mui/icons-material/AccessTime'
 import PlaceIcon from '@mui/icons-material/Place'
 import DownloadIcon from '@mui/icons-material/Download'
 import ArrowDownwardIcon from '@mui/icons-material/ArrowDownward'
+import HowToRegIcon from '@mui/icons-material/HowToReg'
+import EventAvailableIcon from '@mui/icons-material/EventAvailable'
 import CountdownTimer from './CountdownTimer.jsx'
-import { event, theme as eventTheme } from '../data/eventData.js'
+import { event, rsvp, isPlaceholder, theme as eventTheme } from '../data/eventData.js'
+import { googleCalendarUrl } from '../utils/calendar.js'
+
+function rsvpHref() {
+  if (!isPlaceholder(rsvp.url)) return rsvp.url
+  if (!isPlaceholder(rsvp.fallbackEmail)) return `mailto:${rsvp.fallbackEmail}`
+  return null
+}
 
 export default function Hero() {
   return (
@@ -74,11 +82,6 @@ export default function Hero() {
             sx={{ backgroundColor: 'rgba(255,255,255,0.18)', color: 'common.white', px: 1 }}
           />
           <Chip
-            icon={<AccessTimeIcon sx={{ color: 'common.white !important' }} />}
-            label={`${event.startTime} – ${event.endTime} ${event.tzAbbr}`}
-            sx={{ backgroundColor: 'rgba(255,255,255,0.18)', color: 'common.white', px: 1 }}
-          />
-          <Chip
             icon={<PlaceIcon sx={{ color: 'common.white !important' }} />}
             label={event.venue}
             sx={{ backgroundColor: 'rgba(255,255,255,0.18)', color: 'common.white', px: 1 }}
@@ -105,7 +108,26 @@ export default function Hero() {
           spacing={2}
           justifyContent="center"
           className="no-print"
+          sx={{ mb: 2 }}
         >
+          <Button
+            variant="contained"
+            size="large"
+            startIcon={<HowToRegIcon />}
+            component="a"
+            href={rsvpHref() ?? undefined}
+            disabled={!rsvpHref()}
+            target={rsvpHref()?.startsWith('mailto:') ? undefined : '_blank'}
+            rel={rsvpHref()?.startsWith('mailto:') ? undefined : 'noopener noreferrer'}
+            sx={{
+              backgroundColor: 'secondary.main',
+              color: 'common.white',
+              fontWeight: 600,
+              '&:hover': { backgroundColor: 'secondary.dark' },
+            }}
+          >
+            {rsvp.label}
+          </Button>
           <Button
             variant="contained"
             size="large"
@@ -120,9 +142,29 @@ export default function Hero() {
           >
             View Event Plan
           </Button>
+        </Stack>
+
+        <Stack
+          direction={{ xs: 'column', sm: 'row' }}
+          spacing={2}
+          justifyContent="center"
+          className="no-print"
+        >
           <Button
             variant="outlined"
-            size="large"
+            startIcon={<EventAvailableIcon />}
+            onClick={() => window.open(googleCalendarUrl(), '_blank', 'noopener,noreferrer')}
+            sx={{
+              borderColor: 'rgba(255,255,255,0.6)',
+              color: 'common.white',
+              fontWeight: 600,
+              '&:hover': { borderColor: 'common.white', backgroundColor: 'rgba(255,255,255,0.1)' },
+            }}
+          >
+            Add to Calendar
+          </Button>
+          <Button
+            variant="outlined"
             startIcon={<DownloadIcon />}
             onClick={() => window.print()}
             sx={{

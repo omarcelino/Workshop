@@ -54,7 +54,7 @@ export default function Facilitators() {
                   >
                     {!person.photo && initials(person.name)}
                   </Avatar>
-                  <Typography variant="h6" sx={{ fontWeight: 700 }}>
+                  <Typography variant="h6" component="h3" sx={{ fontWeight: 700 }}>
                     {person.name}
                   </Typography>
                   <Typography variant="body2" color="text.secondary" sx={{ mb: 1 }}>

@@ -9,11 +9,16 @@ export const theme = {
   accentColor: '#F9AB00', // [ACCENT COLOUR]
 }
 
+// True for any field still holding a bracketed placeholder (e.g. '[TO CONFIRM]').
+export function isPlaceholder(value) {
+  return !value || /^\[.*\]$/.test(value)
+}
+
 export const event = {
-  title: '[WORKSHOP TITLE]',
-  tagline: '[SHORT ONE-LINE TAGLINE ABOUT THE WORKSHOP]',
+  title: 'Customer Journey Mapping (CJM) Workshop',
+  tagline: 'Mapping the end-to-end customer journey, together.',
   description:
-    '[A short 2–3 sentence description of the workshop — what it covers, who it is for, and why it matters.]',
+    'A full-day, cross-functional workshop bringing together 15 participants from 15 business functions to map the end-to-end customer journey, surface pain points, and align on improvement priorities.',
   date: '2026-09-18', // Friday, 18 September 2026 (ISO format used by the countdown timer)
   displayDate: 'Friday, 18 September 2026',
   startTime: '09:00',
@@ -24,32 +29,61 @@ export const event = {
   timezone: 'Africa/Nairobi',
   tzAbbr: 'EAT',
   utcOffset: '+03:00',
-  venue: '[VENUE / LOCATION NAME]',
-  address: '[FULL VENUE ADDRESS]',
-  expectedParticipants: '[NUMBER, e.g. 40–50]',
-  objective: '[ONE-SENTENCE PRIMARY OBJECTIVE OF THE WORKSHOP]',
+  venue: 'Dusit Princess',
+  address: '[TO CONFIRM — full venue address]',
+  expectedParticipants: '15 (cross-functional)',
+  objective:
+    'To collaboratively map the end-to-end customer journey and agree shared improvement priorities across all customer-facing functions.', // [DRAFT — please confirm wording]
 }
 
+// The 15 business functions represented in the workshop.
+export const businessFunctions = [
+  'Customer Experience',
+  'Customer Care / Call Centre',
+  'Operations',
+  'Battery Operations',
+  'Swap Station Operations',
+  'Technology / Product',
+  'Payments / Finance',
+  'Commercial / Sales',
+  'Marketing',
+  'Field Operations',
+  'Data / Analytics',
+  'Supply Chain',
+  'People / HR',
+  'Country Operations',
+  'Leadership',
+]
+
+// Simplest RSVP option for a static, backend-free site: link out to a form
+// rather than embedding one, so the hero layout stays clean on mobile.
+export const rsvp = {
+  label: 'RSVP Now',
+  url: '[TO CONFIRM — Google Form / Tally link]',
+  fallbackEmail: '[TO CONFIRM — e.g. ruth.oluoch@company.com]',
+}
+
+// [DRAFT — 4 objectives inferred from the CJM workshop brief; please confirm]
 export const objectives = [
   {
     icon: 'TrackChanges',
-    title: '[Objective 1 Title]',
-    description: '[Describe what participants will learn or achieve — Objective 1.]',
+    title: 'Map the Current Journey',
+    description: 'Build a shared, end-to-end view of the customer journey as it exists today, across every touchpoint.',
   },
   {
     icon: 'Groups',
-    title: '[Objective 2 Title]',
-    description: '[Describe what participants will learn or achieve — Objective 2.]',
+    title: 'Align Across Functions',
+    description: 'Bring 15 business functions into one room to build a common understanding of the customer experience.',
   },
   {
     icon: 'Insights',
-    title: '[Objective 3 Title]',
-    description: '[Describe what participants will learn or achieve — Objective 3.]',
+    title: 'Surface Pain Points',
+    description: 'Identify friction, gaps, and breakdowns from the customer\'s perspective at each stage of the journey.',
   },
   {
     icon: 'EmojiObjects',
-    title: '[Objective 4 Title]',
-    description: '[Describe what participants will learn or achieve — Objective 4.]',
+    title: 'Define Next Steps',
+    description: 'Agree concrete, owned improvement actions to carry forward after the workshop.',
   },
 ]
 
@@ -123,58 +157,52 @@ export const agenda = [
 
 export const facilitators = [
   {
-    name: '[Facilitator Name 1]',
-    role: '[Role / Title]',
-    organisation: '[Organisation]',
-    bio: '[Short biography — 1–2 sentences on background and expertise.]',
+    name: 'Rosebella Abok',
+    role: 'Workshop Lead',
+    organisation: '[TO CONFIRM]',
+    bio: 'Leads the design and facilitation of the CJM workshop.', // [DRAFT — please confirm wording]
     photo: '',
   },
   {
-    name: '[Facilitator Name 2]',
-    role: '[Role / Title]',
-    organisation: '[Organisation]',
-    bio: '[Short biography — 1–2 sentences on background and expertise.]',
-    photo: '',
-  },
-  {
-    name: '[Facilitator Name 3]',
-    role: '[Role / Title]',
-    organisation: '[Organisation]',
-    bio: '[Short biography — 1–2 sentences on background and expertise.]',
+    name: 'Ruth Oluoch',
+    role: 'Stakeholder Coordination',
+    organisation: '[TO CONFIRM]',
+    bio: 'Coordinates stakeholder engagement across the 15 participating business functions.', // [DRAFT — please confirm wording]
     photo: '',
   },
 ]
 
 export const participants = {
-  whoShouldAttend: '[Describe the target audience — roles, teams, or experience level.]',
-  expectedNumber: '[NUMBER]',
+  whoShouldAttend: `One representative from each of the 15 business functions: ${businessFunctions.join(', ')}.`,
+  expectedNumber: '15',
   preparation: [
-    '[Any pre-reading or materials to review beforehand]',
-    '[Any accounts, tools, or software to install]',
-    '[Anything else participants should prepare]',
+    '[TO CONFIRM — any pre-reading or materials to review beforehand]',
+    '[TO CONFIRM — any accounts, tools, or software to install]',
+    '[TO CONFIRM — anything else participants should prepare]',
   ],
 }
 
 export const logistics = {
-  venue: '[VENUE NAME]',
-  arrival: '[Arrival / check-in instructions, e.g. arrive 15 minutes early to register.]',
-  parking: '[Parking or public transport information.]',
-  catering: '[Catering details — meals, dietary accommodations, etc.]',
-  whatToBring: ['[Laptop]', '[Notebook and pen]', '[Any required materials]'],
-  contactPerson: '[NAME — LOGISTICS CONTACT]',
+  venue: 'Dusit Princess',
+  arrival: '[TO CONFIRM — arrival / check-in instructions]',
+  parking: '[TO CONFIRM — parking or transport information]',
+  catering: '[TO CONFIRM — catering details]',
+  whatToBring: ['[TO CONFIRM]', '[TO CONFIRM]', '[TO CONFIRM]'],
+  contactPerson: 'Ruth Oluoch',
 }
 
 export const importantInformation = [
-  '[Important reminder 1 — e.g. confirm attendance by a specific date.]',
-  '[Important reminder 2 — e.g. dress code or venue access instructions.]',
-  '[Important reminder 3 — e.g. cancellation policy.]',
+  '[TO CONFIRM — e.g. confirm attendance by a specific date.]',
+  '[TO CONFIRM — e.g. dress code or venue access instructions.]',
+  '[TO CONFIRM — e.g. cancellation policy.]',
 ]
 
 export const contact = {
-  organiser: '[ORGANISER NAME]',
-  organisation: '[ORGANISATION NAME]',
-  email: '[contact@email.com]',
-  phone: '[+254 000 000 000]',
+  organiser: 'Rosebella Abok',
+  organisation: 'Workshop Lead — Customer Journey Mapping (CJM) Workshop', // [TO CONFIRM — department/company]
+  secondaryContact: 'Ruth Oluoch (Stakeholder Coordination)',
+  email: '[TO CONFIRM]',
+  phone: '[TO CONFIRM]',
   social: {
     linkedin: '',
     twitter: '',

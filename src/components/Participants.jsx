@@ -26,7 +26,7 @@ export default function Participants() {
           <Grid size={{ xs: 12, md: 6 }}>
             <Card elevation={2} sx={{ height: '100%', p: 1 }}>
               <CardContent>
-                <Typography variant="h6" sx={{ fontWeight: 700, mb: 1 }}>
+                <Typography variant="h6" component="h3" sx={{ fontWeight: 700, mb: 1 }}>
                   Who Should Attend
                 </Typography>
                 <Typography variant="body2" color="text.secondary" sx={{ mb: 2 }}>
@@ -45,7 +45,7 @@ export default function Participants() {
           <Grid size={{ xs: 12, md: 6 }}>
             <Card elevation={2} sx={{ height: '100%', p: 1 }}>
               <CardContent>
-                <Typography variant="h6" sx={{ fontWeight: 700, mb: 1 }}>
+                <Typography variant="h6" component="h3" sx={{ fontWeight: 700, mb: 1 }}>
                   Preparation Required
                 </Typography>
                 <List dense>

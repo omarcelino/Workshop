@@ -46,7 +46,7 @@ export default function Objectives() {
                     <Avatar sx={{ bgcolor: 'secondary.main', width: 52, height: 52, mb: 2 }}>
                       <Icon />
                     </Avatar>
-                    <Typography variant="h6" sx={{ fontWeight: 700, mb: 1 }}>
+                    <Typography variant="h6" component="h3" sx={{ fontWeight: 700, mb: 1 }}>
                       {obj.title}
                     </Typography>
                     <Typography variant="body2" color="text.secondary">

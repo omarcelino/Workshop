@@ -18,7 +18,7 @@ export default function App() {
   // single source of truth in eventData.js, since index.html is static and
   // can't reference it directly.
   useEffect(() => {
-    document.title = `${event.title} — Workshop Event Plan`
+    document.title = `${event.title} — ${event.displayDate}`
     document
       .querySelector('meta[name="description"]')
       ?.setAttribute('content', event.description)
