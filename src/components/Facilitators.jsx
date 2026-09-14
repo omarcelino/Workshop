@@ -5,6 +5,9 @@ import CardContent from '@mui/material/CardContent'
 import Avatar from '@mui/material/Avatar'
 import Typography from '@mui/material/Typography'
 import Chip from '@mui/material/Chip'
+import Divider from '@mui/material/Divider'
+import Stack from '@mui/material/Stack'
+import AssignmentIndIcon from '@mui/icons-material/AssignmentInd'
 import { facilitators } from '../data/eventData.js'
 import SectionHeading from './SectionHeading.jsx'
 
@@ -69,6 +72,17 @@ export default function Facilitators() {
                 <Typography variant="body2" color="text.secondary">
                   {person.bio}
                 </Typography>
+                {person.responsibility && (
+                  <>
+                    <Divider sx={{ my: 2 }} />
+                    <Stack direction="row" spacing={1} alignItems="center" justifyContent="center">
+                      <AssignmentIndIcon color="primary" fontSize="small" />
+                      <Typography variant="caption" color="text.secondary">
+                        {person.responsibility}
+                      </Typography>
+                    </Stack>
+                  </>
+                )}
               </CardContent>
             </Card>
           ))}

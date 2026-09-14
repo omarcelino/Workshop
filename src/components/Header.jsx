@@ -15,6 +15,7 @@ import EventIcon from '@mui/icons-material/Event'
 import useMediaQuery from '@mui/material/useMediaQuery'
 import { useTheme } from '@mui/material/styles'
 import { event } from '../data/eventData.js'
+import { track } from '../utils/analytics.js'
 
 const navItems = [
   { label: 'Overview', id: 'overview' },
@@ -36,6 +37,7 @@ export default function Header() {
   const isDesktop = useMediaQuery(theme.breakpoints.up('md'))
 
   const handleNavClick = (id) => {
+    track('nav_cta_click', { label: id })
     setDrawerOpen(false)
     scrollTo(id)
   }

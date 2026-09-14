@@ -1,4 +1,17 @@
-import { event } from '../data/eventData.js'
+import { event, isPlaceholder } from '../data/eventData.js'
+
+// Guards against generating a calendar event from incomplete data (e.g.
+// before the real date/time/venue are confirmed). Callers should hide or
+// disable "Add to Calendar" UI when this returns false.
+export function isCalendarDataValid() {
+  return (
+    !isPlaceholder(event.title) &&
+    !isPlaceholder(event.date) &&
+    !isPlaceholder(event.startTime) &&
+    !isPlaceholder(event.endTime) &&
+    !isPlaceholder(event.venue)
+  )
+}
 
 function compactDateTime(dateStr, timeStr) {
   // event.date: 'YYYY-MM-DD', event.startTime/endTime: 'HH:MM' -> 'YYYYMMDDTHHMM00'

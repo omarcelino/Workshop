@@ -12,8 +12,9 @@ import GroupsIcon from '@mui/icons-material/Groups'
 import TrackChangesIcon from '@mui/icons-material/TrackChanges'
 import EventAvailableIcon from '@mui/icons-material/EventAvailable'
 import { event } from '../data/eventData.js'
-import { downloadIcs } from '../utils/calendar.js'
+import { downloadIcs, isCalendarDataValid } from '../utils/calendar.js'
 import { directionsUrl } from '../utils/location.js'
+import { track } from '../utils/analytics.js'
 import SectionHeading from './SectionHeading.jsx'
 
 const cards = [
@@ -21,14 +22,28 @@ const cards = [
     icon: CalendarMonthIcon,
     label: 'Date',
     value: event.displayDate,
-    action: { label: 'Add to Calendar', icon: EventAvailableIcon, onClick: downloadIcs },
+    action: isCalendarDataValid()
+      ? {
+          label: 'Add to Calendar',
+          icon: EventAvailableIcon,
+          onClick: () => {
+            track('add_to_calendar_click', { source: 'event_overview', type: 'ics' })
+            downloadIcs()
+          },
+        }
+      : null,
   },
   { icon: AccessTimeIcon, label: 'Start & End Time', value: `${event.startTime} – ${event.endTime} ${event.tzAbbr}` },
   {
     icon: PlaceIcon,
     label: 'Venue',
     value: event.venue,
-    action: { label: 'Get Directions', icon: PlaceIcon, href: directionsUrl(event.venue) },
+    action: {
+      label: 'Get Directions',
+      icon: PlaceIcon,
+      href: directionsUrl(event.venue),
+      onClick: () => track('directions_click', { source: 'event_overview' }),
+    },
   },
   { icon: GroupsIcon, label: 'Expected Participants', value: event.expectedParticipants },
   { icon: TrackChangesIcon, label: 'Workshop Objective', value: event.objective },
