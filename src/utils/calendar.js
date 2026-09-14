@@ -18,15 +18,23 @@ function compactDateTime(dateStr, timeStr) {
   return `${dateStr.replace(/-/g, '')}T${timeStr.replace(':', '')}00`
 }
 
+// RFC 5545 requires DTSTAMP on every VEVENT: the UTC time the calendar
+// file itself was generated, formatted as YYYYMMDDTHHMMSSZ.
+function formatUtcTimestamp(date) {
+  return date.toISOString().replace(/[-:]/g, '').split('.')[0] + 'Z'
+}
+
 export function buildIcs() {
   const dtStart = compactDateTime(event.date, event.startTime)
   const dtEnd = compactDateTime(event.date, event.endTime)
+  const dtStamp = formatUtcTimestamp(new Date())
   return [
     'BEGIN:VCALENDAR',
     'VERSION:2.0',
     'PRODID:-//Workshop Event Plan//EN',
     'BEGIN:VEVENT',
     `UID:workshop-${event.date}@workshop-event-plan`,
+    `DTSTAMP:${dtStamp}`,
     `DTSTART;TZID=${event.timezone}:${dtStart}`,
     `DTEND;TZID=${event.timezone}:${dtEnd}`,
     `SUMMARY:${event.title}`,
