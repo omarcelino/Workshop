@@ -30,7 +30,10 @@ export default function Objectives() {
         <Box
           sx={{
             display: 'grid',
-            gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))',
+            // Fixed breakpoints (not auto-fit) so 4 cards always land as a
+            // clean 2x2 or 4x1 — auto-fit's column count depends on exact
+            // pixel width and can leave the 4th card orphaned on a 3+1 split.
+            gridTemplateColumns: { xs: '1fr', sm: 'repeat(2, 1fr)', md: 'repeat(4, 1fr)' },
             gap: 3,
           }}
         >
