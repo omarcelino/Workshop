@@ -21,8 +21,8 @@ export const event = {
     'A full-day, cross-functional workshop bringing together 15 participants from 15 business functions to map the end-to-end customer journey, surface pain points, and align on improvement priorities.',
   date: '2026-09-18', // Friday, 18 September 2026 (ISO format used by the countdown timer)
   displayDate: 'Friday, 18 September 2026',
-  startTime: '09:00',
-  endTime: '16:30',
+  startTime: '08:15', // Confirmed via participant comms: arrival 8:00am, start 8:15am
+  endTime: '16:30', // [TO CONFIRM — end time not stated in confirmed comms yet]
   // Workshop times are fixed to East Africa Time regardless of viewer's local timezone.
   // utcOffset is used to build an unambiguous ISO datetime (date + startTime + utcOffset)
   // so the countdown timer target is correct for every visitor, everywhere.
@@ -33,7 +33,7 @@ export const event = {
   address: '[TO CONFIRM — full venue address]',
   expectedParticipants: '15 (cross-functional)',
   objective:
-    'To collaboratively map the end-to-end customer journey and agree shared improvement priorities across all customer-facing functions.', // [DRAFT — please confirm wording]
+    'To establish a shared macro view of the customer journey, identify the moments that matter most, expose customer pain points and operational friction, and surface the cross-functional dependencies needed to act on them.',
 }
 
 // The 15 business functions represented in the workshop.
@@ -63,27 +63,27 @@ export const rsvp = {
   fallbackEmail: '[TO CONFIRM — e.g. jane.doe@company.com]',
 }
 
-// [DRAFT — 4 objectives inferred from the CJM workshop brief; please confirm]
+// Confirmed via participant communications ahead of the workshop.
 export const objectives = [
   {
     icon: 'TrackChanges',
-    title: 'Map the Current Journey',
-    description: 'Build a shared, end-to-end view of the customer journey as it exists today, across every touchpoint.',
-  },
-  {
-    icon: 'Groups',
-    title: 'Align Across Functions',
-    description: 'Bring 15 business functions into one room to build a common understanding of the customer experience.',
+    title: 'Establish a Shared Customer Journey',
+    description: 'Establish a version of the macro customer journey, including digital and physical touchpoints.',
   },
   {
     icon: 'Insights',
-    title: 'Surface Pain Points',
-    description: 'Identify friction, gaps, and breakdowns from the customer\'s perspective at each stage of the journey.',
+    title: 'Identify Moments That Matter',
+    description: 'Pinpoint the moments that disproportionately influence customer and business value.',
   },
   {
-    icon: 'EmojiObjects',
-    title: 'Define Next Steps',
-    description: 'Agree concrete, owned improvement actions to carry forward after the workshop.',
+    icon: 'ReportProblem',
+    title: 'Expose Pain Points & Friction',
+    description: 'Move beyond "customers are unhappy" to understand where, why, and how the experience breaks down.',
+  },
+  {
+    icon: 'Groups',
+    title: 'Surface Cross-Functional Dependencies',
+    description: 'Connect customer problems to the internal functions responsible for solving them.',
   },
 ]
 
@@ -178,13 +178,13 @@ export const participants = {
   whoShouldAttend: `One representative from each of the 15 business functions: ${businessFunctions.join(', ')}.`,
   expectedNumber: '15',
   preparation: [
-    '[TO CONFIRM — any pre-reading or materials to review beforehand]',
-    '[TO CONFIRM — any accounts, tools, or software to install]',
-    '[TO CONFIRM — anything else participants should prepare]',
+    'Bring a can-do, curious attitude — this is a full-day, experiential and practical session.',
+    'Come loaded with operational datapoints from your function.',
+    'Collaboration is the name of the game — be ready to work as a cross-functional team.',
   ],
   // What data/examples to bring, how long preparation should take, and any
   // required materials — displayed in the "Before the Workshop" section.
-  dataToBring: '[TO CONFIRM — e.g. recent customer complaints, process documents, examples of pain points from your function]',
+  dataToBring: 'Operational datapoints from your function — real examples of customer touchpoints, pain points, and friction.',
   effort: '[TO CONFIRM — e.g. approx. 30 minutes]',
   materials: ['[TO CONFIRM]'],
 }
@@ -236,7 +236,7 @@ export const workingPrinciples = [
 
 export const logistics = {
   venue: 'Dusit Princess',
-  arrival: '[TO CONFIRM — arrival / check-in instructions]',
+  arrival: 'Arrival at 8:00 a.m., with the session starting promptly at 8:15 a.m.',
   parking: '[TO CONFIRM — parking or transport information]',
   catering: '[TO CONFIRM — catering details]',
   whatToBring: ['[TO CONFIRM]', '[TO CONFIRM]', '[TO CONFIRM]'],
