@@ -8,6 +8,7 @@ import TrackChangesIcon from '@mui/icons-material/TrackChanges'
 import GroupsIcon from '@mui/icons-material/Groups'
 import InsightsIcon from '@mui/icons-material/Insights'
 import EmojiObjectsIcon from '@mui/icons-material/EmojiObjects'
+import ReportProblemIcon from '@mui/icons-material/ReportProblem'
 import { objectives } from '../data/eventData.js'
 import SectionHeading from './SectionHeading.jsx'
 
@@ -16,6 +17,7 @@ const iconMap = {
   Groups: GroupsIcon,
   Insights: InsightsIcon,
   EmojiObjects: EmojiObjectsIcon,
+  ReportProblem: ReportProblemIcon,
 }
 
 export default function Objectives() {
