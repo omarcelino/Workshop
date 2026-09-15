@@ -4,9 +4,31 @@
 // Every component reads from this file — nothing is hard-coded in the UI.
 // ---------------------------------------------------------------------------
 
+// Design tokens — the single source of truth for the site's colour system.
+// theme.js builds the MUI palette from these, and the Hero/CrossFunctional
+// gradients reference them directly, so changing a brand colour here updates
+// the entire site consistently.
 export const theme = {
-  primaryColor: '#1A73E8', // [PRIMARY COLOUR]
-  accentColor: '#F9AB00', // [ACCENT COLOUR]
+  primaryColor: '#4F46E5', // Indigo — dominant brand accent: buttons, CTAs, nav
+  primaryDark: '#3730A3',
+  primaryLight: '#818CF8',
+  accentColor: '#0D9488', // Teal — journey/workshop highlight accent
+  accentDark: '#0F766E',
+  navyColor: '#172554', // Deep Navy — headings, strong visual elements
+  navyDark: '#0B1229',
+  amberColor: '#F59E0B', // Warm Amber — dates, important highlights, attention elements
+  amberDark: '#B45309',
+  lavenderColor: '#EEF2FF', // Soft Lavender — subtle section backgrounds
+  lavenderDark: '#E0E7FF',
+  backgroundColor: '#F8FAFC', // Off-white — main page background
+  textColor: '#172554', // Headings/body ink — matches navy for a cohesive, high-contrast hierarchy
+  mutedTextColor: '#475569', // Slate — secondary/muted text
+  infoColor: '#0369A1',
+  infoDark: '#075985',
+  successColor: '#15803D',
+  successDark: '#166534',
+  errorColor: '#DC2626',
+  errorDark: '#B91C1C',
 }
 
 // True for any field still holding a bracketed placeholder (e.g. '[TO CONFIRM]').

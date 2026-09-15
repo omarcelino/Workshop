@@ -4,7 +4,6 @@ import Card from '@mui/material/Card'
 import CardContent from '@mui/material/CardContent'
 import Typography from '@mui/material/Typography'
 import Avatar from '@mui/material/Avatar'
-import { alpha } from '@mui/material/styles'
 import MapIcon from '@mui/icons-material/Map'
 import ReportProblemIcon from '@mui/icons-material/ReportProblem'
 import GroupsIcon from '@mui/icons-material/Groups'
@@ -33,7 +32,7 @@ export default function Outcomes() {
     <Box
       id="outcomes"
       component="section"
-      sx={{ py: { xs: 8, md: 10 }, backgroundColor: (t) => alpha(t.palette.success.main, 0.06) }}
+      sx={{ py: { xs: 8, md: 10 }, backgroundColor: 'lavender.main' }}
     >
       <Container maxWidth="lg">
         <SectionHeading

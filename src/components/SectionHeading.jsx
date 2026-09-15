@@ -7,7 +7,9 @@ export default function SectionHeading({ eyebrow, title, subtitle }) {
       {eyebrow && (
         <Typography
           variant="overline"
-          color="secondary.main"
+          // secondary.dark, not .main — teal at full brightness falls short
+          // of WCAG AA for small text like this eyebrow label.
+          color="secondary.dark"
           sx={{ fontWeight: 700, letterSpacing: 1.5 }}
         >
           {eyebrow}

@@ -11,7 +11,6 @@ import LinkedInIcon from '@mui/icons-material/LinkedIn'
 import LanguageIcon from '@mui/icons-material/Language'
 import Button from '@mui/material/Button'
 import HowToRegIcon from '@mui/icons-material/HowToReg'
-import { alpha } from '@mui/material/styles'
 import { contact, rsvp, isPlaceholder } from '../data/eventData.js'
 import { track } from '../utils/analytics.js'
 import SectionHeading from './SectionHeading.jsx'
@@ -29,7 +28,7 @@ export default function Contact() {
     <Box
       id="contact"
       component="section"
-      sx={{ py: { xs: 8, md: 10 }, backgroundColor: (t) => alpha(t.palette.secondary.main, 0.06) }}
+      sx={{ py: { xs: 8, md: 10 }, backgroundColor: 'lavender.main' }}
     >
       <Container maxWidth="sm">
         <SectionHeading eyebrow="Get in Touch" title="Contact" />

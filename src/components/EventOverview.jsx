@@ -11,7 +11,6 @@ import PlaceIcon from '@mui/icons-material/Place'
 import GroupsIcon from '@mui/icons-material/Groups'
 import TrackChangesIcon from '@mui/icons-material/TrackChanges'
 import EventAvailableIcon from '@mui/icons-material/EventAvailable'
-import { alpha } from '@mui/material/styles'
 import { event } from '../data/eventData.js'
 import { downloadIcs, isCalendarDataValid } from '../utils/calendar.js'
 import { directionsUrl } from '../utils/location.js'
@@ -55,7 +54,7 @@ export default function EventOverview() {
     <Box
       id="overview"
       component="section"
-      sx={{ py: { xs: 8, md: 10 }, backgroundColor: (t) => alpha(t.palette.primary.main, 0.06) }}
+      sx={{ py: { xs: 8, md: 10 }, backgroundColor: 'lavender.main' }}
     >
       <Container maxWidth="lg">
         <SectionHeading eyebrow="At a Glance" title="Event Overview" />
@@ -81,7 +80,11 @@ export default function EventOverview() {
               <CardContent>
                 <Avatar
                   sx={{
-                    bgcolor: 'primary.main',
+                    // The Date card gets the amber accent instead of primary —
+                    // gives the workshop date a clear visual hierarchy against
+                    // the other at-a-glance facts.
+                    bgcolor: card.label === 'Date' ? 'warning.main' : 'primary.main',
+                    color: card.label === 'Date' ? 'warning.contrastText' : undefined,
                     width: 56,
                     height: 56,
                     mx: 'auto',

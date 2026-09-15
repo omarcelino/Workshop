@@ -9,7 +9,7 @@ import SectionHeading from './SectionHeading.jsx'
 
 export default function WorkingPrinciples() {
   return (
-    <Box id="working-principles" component="section" sx={{ py: { xs: 8, md: 10 }, backgroundColor: 'background.default' }}>
+    <Box id="working-principles" component="section" sx={{ py: { xs: 8, md: 10 }, backgroundColor: 'lavender.main' }}>
       <Container maxWidth="md">
         <SectionHeading
           eyebrow="Ground Rules"
