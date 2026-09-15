@@ -18,7 +18,7 @@ export default function CrossFunctional() {
             mb: 4,
             borderRadius: 4,
             overflow: 'hidden',
-            background: `linear-gradient(135deg, ${eventTheme.primaryColor} 0%, ${eventTheme.accentColor} 100%)`,
+            background: `linear-gradient(135deg, ${eventTheme.navyColor} 0%, ${eventTheme.primaryColor} 55%, ${eventTheme.accentColor} 100%)`,
             color: 'common.white',
             '&::before': {
               content: '""',

@@ -8,7 +8,7 @@ export default function Footer() {
     <Box
       component="footer"
       className="no-print"
-      sx={{ py: 4, backgroundColor: 'grey.900', color: 'grey.400', textAlign: 'center' }}
+      sx={{ py: 4, backgroundColor: 'navy.dark', color: 'rgba(255,255,255,0.65)', textAlign: 'center' }}
     >
       <Container maxWidth="md">
         <Typography variant="body2" sx={{ color: 'common.white', fontWeight: 600, mb: 0.5 }}>

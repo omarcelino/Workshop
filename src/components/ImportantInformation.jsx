@@ -19,10 +19,10 @@ export default function ImportantInformation() {
           elevation={0}
           sx={{
             p: { xs: 3, md: 4 },
-            backgroundColor: 'secondary.main',
-            // Dark text/icons on the amber accent — white text here falls
+            backgroundColor: 'warning.main',
+            // Navy text/icons on the amber accent — white text here falls
             // well short of WCAG AA contrast (~2:1 vs a required 4.5:1).
-            color: 'rgba(0, 0, 0, 0.87)',
+            color: 'warning.contrastText',
           }}
         >
           <Stack direction="row" spacing={1.5} alignItems="center" sx={{ mb: 2 }}>

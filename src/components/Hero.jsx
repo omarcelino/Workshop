@@ -30,7 +30,7 @@ export default function Hero() {
       className="print-hero"
       sx={{
         position: 'relative',
-        background: `linear-gradient(135deg, ${eventTheme.primaryColor} 0%, ${eventTheme.accentColor} 100%)`,
+        background: `linear-gradient(135deg, ${eventTheme.navyColor} 0%, ${eventTheme.primaryColor} 55%, ${eventTheme.accentColor} 100%)`,
         color: 'common.white',
         pt: { xs: 12, md: 16 },
         pb: { xs: 8, md: 10 },
@@ -78,9 +78,15 @@ export default function Hero() {
           sx={{ mb: 1.5 }}
         >
           <Chip
-            icon={<CalendarMonthIcon sx={{ color: 'common.white !important' }} />}
+            icon={<CalendarMonthIcon sx={{ color: '#FCD34D !important' }} />}
             label={event.displayDate}
-            sx={{ backgroundColor: 'rgba(255,255,255,0.18)', color: 'common.white', px: 1 }}
+            sx={{
+              backgroundColor: 'rgba(245,158,11,0.18)',
+              border: '1px solid rgba(245,158,11,0.5)',
+              color: 'common.white',
+              fontWeight: 600,
+              px: 1,
+            }}
           />
           <Chip
             icon={<PlaceIcon sx={{ color: 'common.white !important' }} />}
@@ -122,12 +128,12 @@ export default function Hero() {
             rel={rsvpHref()?.startsWith('mailto:') ? undefined : 'noopener noreferrer'}
             onClick={() => track('rsvp_click', { source: 'hero' })}
             sx={{
-              backgroundColor: 'secondary.main',
-              // Dark text on the amber accent for sufficient contrast (white
-              // text on secondary.main falls well short of WCAG AA).
-              color: 'rgba(0, 0, 0, 0.87)',
+              backgroundColor: 'warning.main',
+              // Navy text on the amber accent for sufficient contrast (white
+              // text on warning.main falls well short of WCAG AA).
+              color: 'warning.contrastText',
               fontWeight: 600,
-              '&:hover': { backgroundColor: 'secondary.dark' },
+              '&:hover': { backgroundColor: 'warning.dark' },
             }}
           >
             {rsvp.label}

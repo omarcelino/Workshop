@@ -15,7 +15,6 @@ import DirectionsCarIcon from '@mui/icons-material/DirectionsCar'
 import RestaurantIcon from '@mui/icons-material/Restaurant'
 import BackpackIcon from '@mui/icons-material/Backpack'
 import ContactPhoneIcon from '@mui/icons-material/ContactPhone'
-import { alpha } from '@mui/material/styles'
 import { event, logistics } from '../data/eventData.js'
 import { directionsUrl } from '../utils/location.js'
 import SectionHeading from './SectionHeading.jsx'
@@ -40,7 +39,7 @@ export default function Logistics() {
     <Box
       id="logistics"
       component="section"
-      sx={{ py: { xs: 8, md: 10 }, backgroundColor: (t) => alpha(t.palette.primary.main, 0.06) }}
+      sx={{ py: { xs: 8, md: 10 } }}
     >
       <Container maxWidth="lg">
         <SectionHeading eyebrow="Practical Details" title="Logistics" />
@@ -57,7 +56,15 @@ export default function Logistics() {
             <Card key={item.title} elevation={2} sx={{ height: '100%' }}>
               <CardContent>
                 <Stack direction="row" spacing={2} alignItems="flex-start">
-                  <Avatar sx={{ bgcolor: 'primary.main' }}>
+                  <Avatar
+                    sx={{
+                      // Date gets the amber accent, matching Event Overview —
+                      // keeps the workshop date visually consistent wherever
+                      // it's repeated across the page.
+                      bgcolor: item.title === 'Date' ? 'warning.main' : 'primary.main',
+                      color: item.title === 'Date' ? 'warning.contrastText' : undefined,
+                    }}
+                  >
                     <item.icon fontSize="small" />
                   </Avatar>
                   <Box>
