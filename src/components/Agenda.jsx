@@ -77,11 +77,11 @@ export default function Agenda() {
             <TableHead>
               <TableRow sx={{ backgroundColor: 'primary.main' }}>
                 <TableCell component="th" scope="col" sx={{ p: 0, width: 64 }} aria-hidden="true" />
-                <TableCell component="th" scope="col" sx={{ color: 'common.white', fontWeight: 700 }}>Time</TableCell>
-                <TableCell component="th" scope="col" sx={{ color: 'common.white', fontWeight: 700 }}>Session</TableCell>
-                <TableCell component="th" scope="col" sx={{ color: 'common.white', fontWeight: 700 }}>Description</TableCell>
-                <TableCell component="th" scope="col" sx={{ color: 'common.white', fontWeight: 700 }}>Facilitator</TableCell>
-                <TableCell component="th" scope="col" sx={{ color: 'common.white', fontWeight: 700 }}>Type</TableCell>
+                <TableCell component="th" scope="col" sx={{ color: 'primary.contrastText', fontWeight: 700 }}>Time</TableCell>
+                <TableCell component="th" scope="col" sx={{ color: 'primary.contrastText', fontWeight: 700 }}>Session</TableCell>
+                <TableCell component="th" scope="col" sx={{ color: 'primary.contrastText', fontWeight: 700 }}>Description</TableCell>
+                <TableCell component="th" scope="col" sx={{ color: 'primary.contrastText', fontWeight: 700 }}>Facilitator</TableCell>
+                <TableCell component="th" scope="col" sx={{ color: 'primary.contrastText', fontWeight: 700 }}>Type</TableCell>
               </TableRow>
             </TableHead>
             <TableBody>
@@ -122,7 +122,7 @@ export default function Agenda() {
                           borderColor: 'background.paper',
                         }}
                       >
-                        <Icon sx={{ fontSize: 18, color: 'common.white' }} aria-hidden="true" />
+                        <Icon sx={{ fontSize: 18 }} aria-hidden="true" />
                       </Avatar>
                     </TableCell>
                     <TableCell sx={{ fontWeight: 600, whiteSpace: 'nowrap' }}>{item.time}</TableCell>
@@ -161,7 +161,7 @@ export default function Agenda() {
                     }}
                   />
                   <Avatar sx={{ width: 36, height: 36, bgcolor: meta.colorToken, my: 0.5, flexShrink: 0 }}>
-                    <Icon sx={{ fontSize: 20, color: 'common.white' }} />
+                    <Icon sx={{ fontSize: 20 }} />
                   </Avatar>
                   <Box
                     sx={{
