@@ -20,6 +20,7 @@ import { alpha, useTheme } from '@mui/material/styles'
 import { event } from '../data/eventData.js'
 import { track } from '../utils/analytics.js'
 import { useThemeMode } from '../context/ThemeModeContext.jsx'
+import FadeThroughTransition from './FadeThroughTransition.jsx'
 
 const navItems = [
   { label: 'Overview', id: 'overview' },
@@ -141,6 +142,8 @@ export default function Header() {
         onClose={() => setDrawerOpen(false)}
         className="no-print"
         ModalProps={{ keepMounted: true }}
+        TransitionComponent={FadeThroughTransition}
+        transitionDuration={{ enter: 250, exit: 200 }}
       >
         <Box sx={{ width: 260 }} role="presentation">
           <List component="nav" aria-label="Main navigation">
