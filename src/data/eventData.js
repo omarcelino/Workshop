@@ -38,7 +38,8 @@ export function isPlaceholder(value) {
 
 export const event = {
   title: 'Customer Journey Mapping (CJM) Workshop',
-  tagline: 'Mapping the end-to-end customer journey, together.',
+  tagline: 'Turn Customer Interactions Into Memorable Experiences.',
+  hashtag: '#WeMove',
   description:
     'A full-day, cross-functional workshop bringing together 15 participants from 15 business functions to map the end-to-end customer journey, surface pain points, and align on improvement priorities.',
   date: '2026-09-18', // Friday, 18 September 2026 (ISO format used by the countdown timer)
@@ -273,7 +274,7 @@ export const importantInformation = [
 
 export const contact = {
   organiser: 'John Doe', // [TO CONFIRM — name pending]
-  organisation: 'Workshop Lead — Customer Journey Mapping (CJM) Workshop', // [TO CONFIRM — department/company]
+  organisation: 'Spiro', // Confirmed via participant comms (workshop cover slide)
   secondaryContact: 'Jane Doe (Stakeholder Coordination)', // [TO CONFIRM — name pending]
   email: '[TO CONFIRM]',
   phone: '[TO CONFIRM]',

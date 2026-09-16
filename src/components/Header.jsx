@@ -10,12 +10,17 @@ import ListItem from '@mui/material/ListItem'
 import ListItemButton from '@mui/material/ListItemButton'
 import ListItemText from '@mui/material/ListItemText'
 import Box from '@mui/material/Box'
+import Tooltip from '@mui/material/Tooltip'
 import MenuIcon from '@mui/icons-material/Menu'
 import EventIcon from '@mui/icons-material/Event'
+import DarkModeIcon from '@mui/icons-material/DarkMode'
+import LightModeIcon from '@mui/icons-material/LightMode'
 import useMediaQuery from '@mui/material/useMediaQuery'
-import { useTheme } from '@mui/material/styles'
+import { alpha, useTheme } from '@mui/material/styles'
 import { event } from '../data/eventData.js'
 import { track } from '../utils/analytics.js'
+import { useThemeMode } from '../context/ThemeModeContext.jsx'
+import FadeThroughTransition from './FadeThroughTransition.jsx'
 
 const navItems = [
   { label: 'Overview', id: 'overview' },
@@ -35,6 +40,7 @@ export default function Header() {
   const [drawerOpen, setDrawerOpen] = useState(false)
   const theme = useTheme()
   const isDesktop = useMediaQuery(theme.breakpoints.up('md'))
+  const { mode, toggleMode } = useThemeMode()
 
   const handleNavClick = (id) => {
     track('nav_cta_click', { label: id })
@@ -56,7 +62,7 @@ export default function Header() {
           px: 2,
           py: 1,
           backgroundColor: 'primary.main',
-          color: 'common.white',
+          color: 'primary.contrastText',
           borderRadius: 1,
           transition: 'top 0.15s ease',
           '&:focus-visible': {
@@ -74,7 +80,7 @@ export default function Header() {
         color="inherit"
         elevation={1}
         className="no-print"
-        sx={{ backgroundColor: 'rgba(255,255,255,0.9)' }}
+        sx={{ backgroundColor: (t) => alpha(t.palette.background.paper, 0.9) }}
       >
         <Toolbar sx={{ maxWidth: 1200, width: '100%', mx: 'auto' }}>
           <EventIcon color="primary" sx={{ mr: 1 }} aria-hidden="true" />
@@ -101,7 +107,7 @@ export default function Header() {
             {event.title}
           </Typography>
 
-          {isDesktop ? (
+          {isDesktop && (
             <Box component="nav" aria-label="Main navigation" sx={{ display: 'flex', gap: 1 }}>
               {navItems.map((item) => (
                 <Button key={item.id} color="inherit" onClick={() => handleNavClick(item.id)}>
@@ -109,7 +115,20 @@ export default function Header() {
                 </Button>
               ))}
             </Box>
-          ) : (
+          )}
+
+          <Tooltip title={mode === 'dark' ? 'Switch to light mode' : 'Switch to dark mode'}>
+            <IconButton
+              color="inherit"
+              onClick={toggleMode}
+              aria-label={mode === 'dark' ? 'Switch to light mode' : 'Switch to dark mode'}
+              sx={{ ml: 1 }}
+            >
+              {mode === 'dark' ? <LightModeIcon /> : <DarkModeIcon />}
+            </IconButton>
+          </Tooltip>
+
+          {!isDesktop && (
             <IconButton edge="end" onClick={() => setDrawerOpen(true)} aria-label="Open navigation menu">
               <MenuIcon />
             </IconButton>
@@ -123,6 +142,8 @@ export default function Header() {
         onClose={() => setDrawerOpen(false)}
         className="no-print"
         ModalProps={{ keepMounted: true }}
+        TransitionComponent={FadeThroughTransition}
+        transitionDuration={{ enter: 250, exit: 200 }}
       >
         <Box sx={{ width: 260 }} role="presentation">
           <List component="nav" aria-label="Main navigation">
