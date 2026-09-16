@@ -39,7 +39,11 @@ function scrollTo(id) {
 export default function Header() {
   const [drawerOpen, setDrawerOpen] = useState(false)
   const theme = useTheme()
-  const isDesktop = useMediaQuery(theme.breakpoints.up('md'))
+  // 'lg' (not 'md'): at 900-1199px there isn't room for the long event
+  // title plus all 7 nav labels plus the theme toggle in one row — that
+  // combination previously wrapped the title to 4 lines and pushed the
+  // toggle button off-screen. The compact Drawer nav covers that range.
+  const isDesktop = useMediaQuery(theme.breakpoints.up('lg'))
   const { mode, toggleMode } = useThemeMode()
 
   const handleNavClick = (id) => {
@@ -91,9 +95,13 @@ export default function Header() {
             aria-label={`${event.title} — back to top`}
             sx={{
               flexGrow: 1,
+              minWidth: 0,
               fontWeight: 700,
               color: 'text.primary',
               textDecoration: 'none',
+              overflow: 'hidden',
+              textOverflow: 'ellipsis',
+              whiteSpace: 'nowrap',
               '&:focus-visible': {
                 outline: (t) => `2px solid ${t.palette.primary.main}`,
                 outlineOffset: 2,
@@ -108,7 +116,7 @@ export default function Header() {
           </Typography>
 
           {isDesktop && (
-            <Box component="nav" aria-label="Main navigation" sx={{ display: 'flex', gap: 1 }}>
+            <Box component="nav" aria-label="Main navigation" sx={{ display: 'flex', gap: 1, flexShrink: 0 }}>
               {navItems.map((item) => (
                 <Button key={item.id} color="inherit" onClick={() => handleNavClick(item.id)}>
                   {item.label}

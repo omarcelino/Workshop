@@ -161,6 +161,12 @@ export default function getTheme(mode) {
             // of being partially hidden underneath.
             scrollPaddingTop: 88,
           },
+          // Safety net against accidental horizontal page scroll (e.g.
+          // sub-pixel rounding at narrow widths) — no content on this page
+          // intentionally overflows the viewport horizontally.
+          'html, body': {
+            overflowX: 'hidden',
+          },
           // Respect the OS-level reduced-motion setting: kill smooth scroll
           // and card hover transitions for users who've asked for less motion.
           '@media (prefers-reduced-motion: reduce)': {
