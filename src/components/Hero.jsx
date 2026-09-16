@@ -64,9 +64,17 @@ export default function Hero() {
         >
           {event.title}
         </Typography>
-        <Typography variant="h6" component="p" sx={{ mb: 3, opacity: 0.95, fontWeight: 400 }}>
+        <Typography variant="h6" component="p" sx={{ mb: 1, opacity: 0.95, fontWeight: 400 }}>
           {event.tagline}
         </Typography>
+        {event.hashtag && (
+          <Typography
+            variant="subtitle2"
+            sx={{ mb: 3, opacity: 0.85, fontWeight: 700, letterSpacing: 0.5 }}
+          >
+            {event.hashtag}
+          </Typography>
+        )}
 
         <Stack
           direction={{ xs: 'column', sm: 'row' }}
